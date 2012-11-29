@@ -4,16 +4,13 @@ class S3SourceDeliverer
   def initialize(options)
     @paths = options[:paths]
     @bucket_name = options[:bucket_name]
+    @source = options[:complete_archive_path]
   end
 
-  attr_reader :bucket_name
-
-  def source
-    @paths.resource "game.zip"
-  end
+  attr_reader :bucket_name, :source
 
   def destination
-    File.join @paths.relative_user_game_path, "game.zip"
+    File.join @paths.relative_user_game_path, File.basename(source)
   end
 
   def perform

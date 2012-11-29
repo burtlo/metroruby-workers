@@ -4,6 +4,8 @@ class AssetPaths
     @game_name = options[:game_name].underscore.gsub(/\s/,'_')
   end
 
+  attr_reader :user_name, :game_name
+
   def base_path
     File.join File.dirname(__FILE__), ".."
   end

@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+path = __FILE__
+while File.symlink?(path)
+  path = File.expand_path(File.readlink(__FILE__), File.dirname(__FILE__))
+end
+$:.unshift(File.join(File.dirname(File.expand_path(path)), '..', 'lib'))
+
+require 'metro'
+require 'commands/thor'
+
+if Metro::Thor.tasks.keys.include? ARGV.first
+  Metro::Thor.start
+else
+  Metro.run(*ARGV)
+end

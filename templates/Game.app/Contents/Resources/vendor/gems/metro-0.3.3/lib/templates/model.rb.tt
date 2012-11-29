@@ -1,0 +1,111 @@
+class <%= model_name %> < GameModel
+
+  #
+  # Properties
+  #
+  # Models commonly have properties that you want to be able to get, set, and save.
+  # Usually within ruby you would write attr_accessor methods and initialize them.
+  # Metro provides some shorthand class helper methods that allow you to quickly
+  # define these properties with the added benefit that they will be persisted when
+  # the model is saved within the view and the type will be maintained.
+  #
+  # # @example of adding a `position` property to your model
+  # # Property defines a `position` accessor as well as `x`, `y`, and `z` (or `z_order`)
+  # # accessors.
+  # property :position
+  #
+  # # @example of adding an `image` property to your model
+  # # An image property can be set up with an image path or that can be set later
+  # # through the `image` accessor that is added.
+  #
+  # property :image, path: "player.png"
+  #
+  # # @example of adding an `numeric` property to your model
+  # # A lot of times you want to track some numeric value like score. Here we
+  # # create a `score` accessor and assign a default value.
+  # property :score, type: numeric, default: 0
+  #
+  # # @example of adding an `text` property to your model
+  # # A lot of times you want to track some numeric value like score. Here we
+  # # create a `text` accessor and assign a default value.
+  # property :description, type: text, default: 'Greetings Earthling!'
+  #
+  # For more information see the other defined properties.
+  #
+  # @see Metro::Model::AnimationProperty
+  # @see Metro::Model::ImageProperty
+  # @see Metro::Model::SongProperty
+  # @see Metro::Model::SampleProperty
+  # @see Metro::Model::NumericProperty
+  # @see Metro::Model::ScaleProperty
+  # @see Metro::Model::TextProperty
+  # @see Metro::Model::PositionProperty
+  # @see Metro::Model::FontProperty
+  #
+
+  #
+  # Events
+  #
+  # # @example Registering the keyboard down event to execute a block of code
+  # event :on_down, GpLeft, GpUp, do
+  #   turn_left
+  # end
+  #
+  # # @example Registering the keyboard up key to execute the method `jump`
+  # event :on_up, KbEscape, do: :jump
+  #
+  # # @example Registering for button held events that would build the model's acceleration
+  # event :on_hold, KbRight, GpRight do
+  #   acceleration += 1
+  # end
+  #
+  # Keystroke and Game Event Reference
+  #
+  # @see https://github.com/jlnr/gosu/blob/master/Gosu/ButtonsMac.hpp
+  # @see https://github.com/jlnr/gosu/blob/master/Gosu/ButtonsX.hpp
+  # @see https://github.com/jlnr/gosu/blob/master/Gosu/ButtonsWin.hpp
+  #
+  #
+  # # @example Registering for an event called 'save_complete' event that anyone
+  # #   can generate and this scene block will execute this code.
+  #
+  # event :notification, :game_over do
+  #   puts "Game is Over!"
+  # end
+  #
+  # Within the models you could use the method `notification`
+  # to generate the notification
+  #
+  # def update_score
+  #   @score = score + 1
+  #   if score >= winning_score
+  #     notification :game_over
+  #   end
+  # end
+  #
+
+  #
+  # As model does a lot of work for you with regarding to setting up content, it is
+  # best not to override #initialize and instead define an #after_initialize method
+  # within the subclasses of Scene.
+  #
+  def after_initialize ; end
+
+  #
+  # This method is called right after the model has been added to the scene and added
+  # to the window.
+  #
+  def show ; end
+
+  #
+  # This is called every update interval while the window is being shown.
+  #
+  def update ; end
+  
+  #
+  # This is called after every #update and when the OS wants the window to
+  # repaint itself.
+  #
+  def draw ; end
+
+end

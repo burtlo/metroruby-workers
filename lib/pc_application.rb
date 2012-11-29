@@ -11,7 +11,7 @@ require_relative 'prepare_environment'
 require_relative 's3_source_deliverer'
 require_relative 's3_source_retriever'
 require_relative 'windows_executable_generator'
-require_relative 'zip_archive_packer'
+require_relative 'windows_zip_archive_packer'
 
 class PCApplication
   @queue = :pc_application_queue
@@ -22,9 +22,10 @@ class PCApplication
       options.symbolize_keys!
 
       paths = AssetPaths.new options
+      step_options = { paths: paths, bucket_name: 'rubymetro-dev' }
 
       application_preparation_steps.each do |step|
-        step_instance = step.new paths: paths, bucket_name: 'rubymetro-dev'
+        step_instance = step.new step_options
         step_instance.perform
       end
     end
@@ -35,7 +36,7 @@ class PCApplication
         ArchiveUnpacker,
         GamePreparer,
         WindowsExecutableGenerator,
-        ZipArchivePacker,
+        WindowsZipArchivePacker,
         S3SourceDeliverer,
         CleanupEnvironment ]
     end
