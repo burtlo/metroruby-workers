@@ -6,8 +6,8 @@ puts "Loading AWS configuration from #{config_path}"
 
 config = YAML.load(File.read(config_path))
 
-puts "YAML config: #{config}"
+# puts "YAML config: #{config}"
 AWS.config config['development']
 
-puts "AWS: #{AWS.config}"
+# puts "AWS: #{AWS.config}"
 
