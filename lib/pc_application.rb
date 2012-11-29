@@ -28,6 +28,8 @@ class PCApplication
         step_instance = step.new step_options
         step_instance.perform
       end
+
+      Resque.enqueue AddRelease, options.merge(platform: :pc, url: options[:s3_public_url])
     end
 
     def application_preparation_steps

@@ -2,6 +2,7 @@ class S3SourceDeliverer
   include Logging
 
   def initialize(options)
+    @options = options
     @paths = options[:paths]
     @bucket_name = options[:bucket_name]
     @source = options[:complete_archive_path]
@@ -18,6 +19,8 @@ class S3SourceDeliverer
 
     s3_object.delete
     s3_object.write file: source
+
+    @options[:s3_public_url] = s3_object.public_url
 
     log.debug "Amazong S3 - Finished pushing source to #{s3_object.public_url}"
   end
