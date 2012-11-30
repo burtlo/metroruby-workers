@@ -9,6 +9,7 @@ class MacApplicationGenerator
     log.debug "Mac Application Generator - has started creating an application"
 
     copy_application_wrapper
+    create_application_wrapper_paths
     copy_source_into_wrapper
 
     log.debug "Mac Application Generator - finished creating an application"
@@ -16,6 +17,12 @@ class MacApplicationGenerator
 
   def copy_application_wrapper
     FileUtils.cp_r application_wrapper_path, destination_application_wrapper_path
+  end
+
+  def create_application_wrapper_paths
+    [ "assets", "scenes", "lib", "views", "models" ].each do |folder|
+      File.mkdir_p File.join(destination_application_wrapper_path,folder)
+    end
   end
 
   def copy_source_into_wrapper
