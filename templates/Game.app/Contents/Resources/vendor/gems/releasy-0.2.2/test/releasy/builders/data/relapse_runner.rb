@@ -1,1 +1,0 @@
-load 'bin/test_app'
