@@ -18,11 +18,11 @@ class S3SourceDeliverer
     log.debug "Amazon S3 - Pushing source #{source}"
 
     s3_object.delete
-    s3_object.write file: source
+    s3_object.write file: source, access: :public_read
 
-    @options[:s3_public_url] = s3_object.public_url
+    @options[:s3_public_url] = s3_object.url_for(:read,expires: 5.years.from_now).to_s
 
-    log.debug "Amazong S3 - Finished pushing source to #{s3_object.public_url}"
+    log.debug "Amazon S3 - Finished pushing source to #{s3_object.public_url}"
   end
 
   private

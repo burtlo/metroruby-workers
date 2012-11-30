@@ -29,7 +29,7 @@ class MacApplication
         step_instance.perform
       end
 
-       Resque.enqueue AddRelease, options.merge(platform: :mac, url: options[:s3_public_url])
+       Resque.enqueue AddRelease, options.merge(platform: :mac, url: step_options[:s3_public_url])
 
     end
 
