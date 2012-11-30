@@ -33,7 +33,7 @@ class MacApplicationGenerator
   end
 
   def sources
-    Dir["#{@paths.resource('source')}/**/*"]
+    Dir[File.join(@paths.resource('source'),'*')]
   end
 
   def destination_within_wrapper_path

@@ -1,5 +1,4 @@
-require './lib/pc_application'
-require './lib/mac_application'
+require './lib/workers'
 
 # PCApplication.perform user_name: 'Frank',  game_name: 'Starry Knight'
 # MacApplication.perform user_name: 'Frank',  game_name: 'Starry Knight'

@@ -10,9 +10,13 @@ require_relative 'game_preparer'
 require_relative 'prepare_environment'
 require_relative 's3_source_deliverer'
 require_relative 's3_source_retriever'
+
+require_relative 'pc_application'
 require_relative 'windows_executable_generator'
 require_relative 'windows_zip_archive_packer'
 
-require_relative 'add_release'
-require_relative 'pc_application'
 require_relative 'mac_application'
+require_relative 'mac_application_generator'
+require_relative 'mac_zip_archive_packer'
+
+require_relative 'add_release'
