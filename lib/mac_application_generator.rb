@@ -21,7 +21,7 @@ class MacApplicationGenerator
 
   def create_application_wrapper_paths
     [ "assets", "scenes", "lib", "views", "models" ].each do |folder|
-      FileUtils.mkdir_p File.join(destination_application_wrapper_path,folder)
+      FileUtils.mkdir_p "#{destination_within_wrapper_path}\#{folder}"
     end
   end
 
