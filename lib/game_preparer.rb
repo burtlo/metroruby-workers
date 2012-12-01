@@ -25,7 +25,7 @@ class GamePreparer
 
   def force_game_to_release
     game_contents = File.read(game_file)
-    game_contents.gsub!(/^\s+debug\s+true\s+$/,'debug false')
+    game_contents.gsub!(/^\s*debug\s+true\s*$/,'debug false')
     File.write(game_file,game_contents)
   end
 
